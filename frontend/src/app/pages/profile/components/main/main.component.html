@@ -1,0 +1,107 @@
+<app-navbar></app-navbar>
+<notifier-container></notifier-container>
+
+<div class="container animate__animated animate__fadeIn">
+    <div class="row mt-fix">
+        <div class="col-md-12 p-0">
+            <h3 class="text-center">Update your information</h3>
+        </div>
+
+        <div class="col-md-6 offset-md-3 col-lg-4 offset-lg-4 mt-3">
+            <form (submit)="update($event)">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-4" [formGroup]="formUpdate">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control"
+                                [ngClass]="(formUpdate.get('name')?.touched! && formUpdate.get('name')?.invalid!) | toggle : 'is-invalid'"
+                                id="name" formControlName="name" placeholder="Enter name" autofocus>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group mb-4" [formGroup]="formUpdate">
+                            <label for="lastname">Lastname</label>
+                            <input type="text" class="form-control"
+                                [ngClass]="(formUpdate.get('lastname')?.touched! && formUpdate.get('lastname')?.invalid!) | toggle : 'is-invalid'"
+                                id="lastname" formControlName="lastname" placeholder="Enter lastname">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-4" [formGroup]="formUpdate">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control"
+                                [ngClass]="(formUpdate.get('username')?.touched! && formUpdate.get('username')?.invalid!) | toggle : 'is-invalid'"
+                                id="username" formControlName="username" placeholder="Enter username">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group mb-4" [formGroup]="formUpdate">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control"
+                                [ngClass]="(formUpdate.get('email')?.touched! && formUpdate.get('email')?.invalid!) | toggle : 'is-invalid'"
+                                id="email" formControlName="email" placeholder="Enter email">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-4" [formGroup]="formUpdate">
+                            <label for="country">Country</label>
+                            <input type="text" class="form-control"
+                                [ngClass]="(formUpdate.get('country')?.touched! && formUpdate.get('country')?.invalid!) | toggle : 'is-invalid'"
+                                id="country" formControlName="country" placeholder="Enter country">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group mb-4" [formGroup]="formUpdate">
+                            <label for="city">City</label>
+                            <input type="text" class="form-control"
+                                [ngClass]="(formUpdate.get('city')?.touched! && formUpdate.get('city')?.invalid!) | toggle : 'is-invalid'"
+                                id="city" formControlName="city" placeholder="Enter city">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-4" [formGroup]="formUpdate">
+                            <label for="numberTelephone">Number telephone</label>
+                            <input type="text" class="form-control"
+                                [ngClass]="(formUpdate.get('numberTelephone')?.touched! && formUpdate.get('numberTelephone')?.invalid!) | toggle : 'is-invalid'"
+                                id="numberTelephone" formControlName="numberTelephone" placeholder="Enter number">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group mb-4" [formGroup]="formUpdate">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control"
+                                [ngClass]="(formUpdate.get('password')?.touched! && formUpdate.get('password')?.invalid!) | toggle : 'is-invalid'"
+                                id="password" formControlName="password" placeholder="Enter password">
+                        </div>
+                    </div>
+                </div>
+
+                <button *ngIf="!loading" type="submit" class="btn btn-dark w-100"
+                    [disabled]="formUpdate.invalid">Update</button>
+
+                <div *ngIf="loading" class="spinner-grow d-block mx-auto bg-dark" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </form>
+
+            <div class="text-center mt-4 mb-6">
+                <a *ngIf="!loading" (click)="removeAccount()">Remove account</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

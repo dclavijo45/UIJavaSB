@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<notifier-container></notifier-container>
+
+<div class="container animate__animated animate__fadeIn">
+    <div class="row mt-10">
+        <div class="col-md-12 p-0">
+            <h3 class="text-center">Sign in with your account</h3>
+        </div>
+
+        <div class="col-md-6 offset-md-3 col-lg-4 offset-lg-4 mt-3">
+            <form (submit)="login($event)">
+                <div class="form-group mb-4" [formGroup]="formLogin">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username"
+                        [ngClass]="(formLogin.get('username')?.touched! && formLogin.get('username')?.invalid!) | toggle : 'is-invalid'"
+                        formControlName="username" placeholder="Enter usernane" autofocus>
+                </div>
+
+                <div class="form-group mb-4" [formGroup]="formLogin">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password"
+                        [ngClass]="(formLogin.get('password')?.touched! && formLogin.get('password')?.invalid!) | toggle : 'is-invalid'"
+                        formControlName="password" placeholder="Enter password">
+                </div>
+
+                <button *ngIf="!loading" type="submit" class="btn btn-dark w-100"
+                    [disabled]="formLogin.invalid">Login</button>
+
+                <div *ngIf="loading" class="spinner-grow d-block mx-auto bg-dark" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </form>
+
+            <div class="text-center mt-4">
+                <a class="text-primary cursor-pointer" routerLink="/auth/register">You do not have an account? Sign up</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
